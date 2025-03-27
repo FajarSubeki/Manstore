@@ -12,11 +12,12 @@ Link : https://drive.google.com/file/d/1de9XoIy5iT_Mk5-7saAsD_wNag6Uoc-B/view?us
 
 ## Screenshots
 
+<img src="https://github.com/FajarSubeki/Manstore/blob/main/screenshoot/login.png" width="256">&nbsp;&nbsp;
+<img src="https://github.com/FajarSubeki/Manstore/blob/main/screenshoot/home.png" width="256">&nbsp;&nbsp;
+<img src="https://github.com/FajarSubeki/Manstore/blob/main/screenshoot/profile.png" width="256">&nbsp;&nbsp;
+<br />
 <img src="https://github.com/FajarSubeki/Manstore/blob/main/screenshoot/cart.png" width="256">&nbsp;&nbsp;
 <img src="https://github.com/FajarSubeki/Manstore/blob/main/screenshoot/cartdetail.png" width="256">&nbsp;&nbsp;
-<img src="https://github.com/FajarSubeki/Manstore/blob/main/screenshoot/home.png" width="256">&nbsp;&nbsp;<br />
-<img src="https://github.com/FajarSubeki/Manstore/blob/main/screenshoot/login.png" width="256">&nbsp;&nbsp;
-<img src="https://github.com/FajarSubeki/Manstore/blob/main/screenshoot/profile.png" width="256">&nbsp;&nbsp;
 
 ## Techstack
 - Kotlin
