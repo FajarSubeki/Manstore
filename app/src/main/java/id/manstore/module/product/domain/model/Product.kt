@@ -10,6 +10,6 @@ data class Product(
     val id: Int,
     val image: String,
     val price: Double,
-    val rating: Rating,
+    val rating: Rating?,
     val title: String
 ) : Parcelable

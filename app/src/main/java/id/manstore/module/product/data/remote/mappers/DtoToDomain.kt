@@ -12,7 +12,7 @@ internal fun ProductDto.toDomain(): Product {
         id = id,
         image = image,
         price = price,
-        rating = ratingDto.toDomain(),
+        rating = ratingDto?.toDomain(),
         title = title
     )
 }

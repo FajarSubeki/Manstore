@@ -1,14 +1,20 @@
 package id.manstore.module.product.presentation.product_details
 
 import android.annotation.SuppressLint
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
+import android.widget.Toast.makeText
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,6 +26,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.gowtham.ratingbar.RatingBar
@@ -33,14 +40,19 @@ import id.manstore.R
 import id.manstore.core.presentation.theme.GrayColor
 import id.manstore.core.presentation.theme.MainWhiteColor
 import id.manstore.core.presentation.theme.PrimaryColor
+import id.manstore.module.cart.presentation.CartItemsState
+import id.manstore.module.cart.presentation.CartViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Destination
 @Composable
 fun ProductDetailsScreen(
     product: Product,
-    navigator: DestinationsNavigator
+    navigator: DestinationsNavigator,
+    viewModel: CartViewModel = hiltViewModel()
 ) {
+
+    val cartState = viewModel.state.value
 
     Scaffold(
         backgroundColor = Color.White,
@@ -68,7 +80,9 @@ fun ProductDetailsScreen(
     ) {
         DetailsScreenContent(
             product = product,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
+            viewModel,
+            cartState
         )
     }
 }
@@ -77,7 +91,12 @@ fun ProductDetailsScreen(
 fun DetailsScreenContent(
     product: Product,
     modifier: Modifier = Modifier,
+    viewModel: CartViewModel,
+    state: CartItemsState
 ) {
+
+    var shouldObserve by remember { mutableStateOf(false) } // Flag to control LaunchedEffect
+
     Column {
         Box(modifier = modifier.weight(1f), contentAlignment = Alignment.Center) {
             Image(
@@ -125,7 +144,9 @@ fun DetailsScreenContent(
 
                     Spacer(modifier = Modifier.height(12.dp))
 
-                    val rating: Float by remember { mutableStateOf(product.rating.rate.toFloat()) }
+                    val rating: Float by remember {
+                        mutableFloatStateOf(product.rating?.rate?.toFloat() ?: 0f)
+                    }
 
                     Row(
                         horizontalArrangement = Arrangement.SpaceAround,
@@ -147,7 +168,7 @@ fun DetailsScreenContent(
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = "(${product.rating.count})",
+                            text = "(${product.rating?.count})",
                             color = Color.Black,
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Light
@@ -182,6 +203,8 @@ fun DetailsScreenContent(
 
                     Button(
                         onClick = {
+                            viewModel.addCartItems(product.id, listOf(product))
+                            shouldObserve = true
                         },
                         colors = ButtonDefaults.buttonColors(
                             contentColor = Color.White,
@@ -197,6 +220,20 @@ fun DetailsScreenContent(
                             textAlign = TextAlign.Center,
                             text = stringResource(R.string.add_to_cart)
                         )
+                    }
+
+                    val context = LocalContext.current
+                    if (shouldObserve) {
+                        LaunchedEffect(state) {
+                            if (state.isLoading) {
+                                println("loading")
+                            } else if (state.cartItems.isNotEmpty()) {
+                                makeText(context, "Success add to cart", LENGTH_SHORT).show()
+                            } else if (state.error != null){
+                                makeText(context, state.error, LENGTH_SHORT).show()
+                            }
+                        }
+//                        shouldObserve = false
                     }
                 }
             }

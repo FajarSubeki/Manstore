@@ -11,6 +11,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import id.manstore.core.util.Constants
 import id.manstore.module.auth.data.local.AuthPreferences
+import id.manstore.module.cart.domain.use_case.AddCartItemsUseCase
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -47,5 +48,15 @@ object CartModule {
         gson: Gson
     ): GetCartItemsUseCase {
         return GetCartItemsUseCase(cartRepository, authPreferences, gson)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAddCartItemsUseCase(
+        cartRepository: CartRepository,
+        authPreferences: AuthPreferences,
+        gson: Gson
+    ): AddCartItemsUseCase {
+        return AddCartItemsUseCase(cartRepository, authPreferences, gson)
     }
 }

@@ -4,6 +4,9 @@ import id.manstore.module.cart.domain.model.CartProduct
 import id.manstore.module.cart.domain.repository.CartRepository
 import id.manstore.core.util.Resource
 import id.manstore.module.cart.data.remote.CartApiService
+import id.manstore.module.product.data.remote.dto.AddCartRequestDto
+import id.manstore.module.product.data.remote.dto.ProductDto
+import id.manstore.module.product.domain.model.Product
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
@@ -33,6 +36,31 @@ class CartRepositoryImpl(
                 }
             }
             emit(Resource.Success(cartItems.toList().distinctBy { it.name }))
+        } catch (e: IOException) {
+            emit(Resource.Error(message = "Could not reach the server, please check your internet connection!"))
+        } catch (e: HttpException) {
+            emit(Resource.Error(message = "Oops, something went wrong!"))
+        }
+    }
+
+    override suspend fun addCartItems(id: Int, userId: Int, products: List<Product>): Flow<Resource<CartProduct>> = flow {
+        Timber.d("add cart items called")
+        emit(Resource.Loading())
+        try {
+            // Convert Product to ProductDto
+            val productDtos = products.map { product ->
+                ProductDto(
+                    id = product.id,
+                    title = product.title,
+                    price = product.price,
+                    description = product.description,
+                    category = product.category,
+                    image = product.image,
+                )
+            }
+            val request = AddCartRequestDto(id, userId, productDtos)
+            val response = cartApiService.addCartItem(request)
+            emit(Resource.Success(response))
         } catch (e: IOException) {
             emit(Resource.Error(message = "Could not reach the server, please check your internet connection!"))
         } catch (e: HttpException) {

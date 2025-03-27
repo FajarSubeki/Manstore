@@ -1,6 +1,7 @@
 package id.manstore.module.product.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
+import id.manstore.module.product.domain.model.Product
 
 data class ProductDto(
     @SerializedName("category")
@@ -14,7 +15,19 @@ data class ProductDto(
     @SerializedName("price")
     val price: Double,
     @SerializedName("rating")
-    val ratingDto: RatingDto,
+    val ratingDto: RatingDto? = null,
     @SerializedName("title")
     val title: String
+)
+
+data class AddCartRequestDto(
+    val id: Int,
+    val userId: Int,
+    val products: List<ProductDto>
+)
+
+data class CartProduct(
+    val id: Int,
+    val userId: Int,
+    val products: List<ProductDto>
 )

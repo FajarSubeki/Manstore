@@ -1,5 +1,6 @@
 package id.manstore.module.cart.presentation
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -29,6 +30,7 @@ import id.manstore.core.util.LoadingAnimation
 import id.manstore.core.util.UiEvents
 import kotlinx.coroutines.flow.collectLatest
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Destination
 @Composable
 fun CartScreen(
