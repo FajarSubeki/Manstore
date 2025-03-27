@@ -1,7 +1,6 @@
 package id.manstore.module.product.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
-import id.manstore.module.product.domain.model.Product
 
 data class ProductDto(
     @SerializedName("category")

@@ -1,17 +1,17 @@
 package id.manstore.module.cart.di
 
 import com.google.gson.Gson
-import id.manstore.module.cart.data.remote.CartApiService
-import id.manstore.module.cart.data.repository.CartRepositoryImpl
-import id.manstore.module.cart.domain.repository.CartRepository
-import id.manstore.module.cart.domain.use_case.GetCartItemsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import id.manstore.core.util.Constants
 import id.manstore.module.auth.data.local.AuthPreferences
+import id.manstore.module.cart.data.remote.CartApiService
+import id.manstore.module.cart.data.repository.CartRepositoryImpl
+import id.manstore.module.cart.domain.repository.CartRepository
 import id.manstore.module.cart.domain.use_case.AddCartItemsUseCase
+import id.manstore.module.cart.domain.use_case.GetCartItemsUseCase
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton

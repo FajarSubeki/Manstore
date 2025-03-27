@@ -4,9 +4,9 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import id.manstore.module.auth.domain.use_case.AutoLoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.manstore.core.util.Resource
+import id.manstore.module.auth.domain.use_case.AutoLoginUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

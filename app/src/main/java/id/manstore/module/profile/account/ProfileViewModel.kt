@@ -11,7 +11,6 @@ import id.manstore.core.util.UiEvents
 import id.manstore.module.auth.data.dto.UserResponseDto
 import id.manstore.module.auth.domain.model.User
 import id.manstore.module.auth.domain.use_case.LogoutUseCase
-import id.manstore.module.destinations.LoginScreenDestination
 import id.manstore.module.profile.data.repository.ProfileRepository
 import id.manstore.module.profile.data.toDomain
 import kotlinx.coroutines.flow.MutableSharedFlow

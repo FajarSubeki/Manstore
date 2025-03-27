@@ -16,10 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import id.manstore.module.auth.util.Constants.SPLASH_SCREEN_DURATION
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import id.manstore.R
+import id.manstore.module.auth.util.Constants.SPLASH_SCREEN_DURATION
 import id.manstore.module.destinations.HomeScreenDestination
 import id.manstore.module.destinations.LoginScreenDestination
 import kotlinx.coroutines.Dispatchers

@@ -1,11 +1,11 @@
 package id.manstore.module.profile.di
 
-import id.manstore.module.profile.data.repository.ProfileRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import id.manstore.module.auth.data.local.AuthPreferences
+import id.manstore.module.profile.data.repository.ProfileRepository
 import javax.inject.Singleton
 
 @Module

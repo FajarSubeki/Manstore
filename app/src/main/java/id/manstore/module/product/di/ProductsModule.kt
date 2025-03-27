@@ -1,15 +1,15 @@
 package id.manstore.module.product.di
 
-import id.manstore.module.product.data.remote.ProductsApiService
-import id.manstore.module.product.data.repository.ProductsRepositoryImpl
-import id.manstore.module.product.domain.repository.ProductsRepository
-import id.manstore.module.product.domain.use_case.GetCategoriesUseCase
-import id.manstore.module.product.domain.use_case.GetProductsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import id.manstore.core.util.Constants
+import id.manstore.module.product.data.remote.ProductsApiService
+import id.manstore.module.product.data.repository.ProductsRepositoryImpl
+import id.manstore.module.product.domain.repository.ProductsRepository
+import id.manstore.module.product.domain.use_case.GetCategoriesUseCase
+import id.manstore.module.product.domain.use_case.GetProductsUseCase
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton

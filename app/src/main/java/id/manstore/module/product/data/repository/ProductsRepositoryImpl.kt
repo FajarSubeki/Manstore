@@ -1,10 +1,10 @@
 package id.manstore.module.product.data.repository
 
+import id.manstore.core.util.Resource
 import id.manstore.module.product.data.remote.ProductsApiService
 import id.manstore.module.product.data.remote.mappers.toDomain
 import id.manstore.module.product.domain.model.Product
 import id.manstore.module.product.domain.repository.ProductsRepository
-import id.manstore.core.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException

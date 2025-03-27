@@ -1,11 +1,11 @@
 package id.manstore.module.auth.data.repository
 
+import id.manstore.core.util.Resource
 import id.manstore.module.auth.data.dto.UserResponseDto
 import id.manstore.module.auth.data.local.AuthPreferences
 import id.manstore.module.auth.data.remote.AuthApiService
 import id.manstore.module.auth.data.remote.request.LoginRequest
 import id.manstore.module.auth.domain.repository.LoginRepository
-import id.manstore.core.util.Resource
 import kotlinx.coroutines.flow.first
 import retrofit2.HttpException
 import timber.log.Timber

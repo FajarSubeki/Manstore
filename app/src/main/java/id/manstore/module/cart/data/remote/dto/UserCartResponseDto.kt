@@ -1,7 +1,6 @@
 package id.manstore.module.cart.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
-import id.manstore.module.cart.data.remote.dto.CartProductDto
 
 data class UserCartResponseDto(
     @SerializedName("date")
