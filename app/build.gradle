@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-    id 'com.google.devtools.ksp' version '1.6.10-1.0.4'
+    id 'com.google.devtools.ksp' version '1.9.0-1.0.13'
     id 'kotlin-parcelize'
 }
 
@@ -41,7 +41,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.5.1'
+        kotlinCompilerExtensionVersion compose_version
     }
     packaging {
         resources {
@@ -85,7 +85,7 @@ dependencies {
 
     // Material
     implementation "androidx.compose.material:material:$compose_version"
-    implementation libs.androidx.material3
+//    implementation libs.androidx.material3
 
     // Hilt for DI
     implementation libs.hilt.android
@@ -94,8 +94,10 @@ dependencies {
     kapt libs.androidx.hilt.compiler
     implementation libs.androidx.hilt.navigation.compose
     // Navigation made easier
-    implementation libs.core
-    ksp libs.ksp
+//    implementation libs.core
+//    ksp libs.ksp
+    implementation 'io.github.raamcosta.compose-destinations:core:1.5.9-beta'
+    ksp 'io.github.raamcosta.compose-destinations:ksp:1.5.9-beta'
 
     // Coil for loading images
     implementation(libs.coil.compose)
